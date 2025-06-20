@@ -3,7 +3,7 @@ services:
     image: prom/prometheus
     container_name: prometheus
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - "--config.file=/etc/prometheus/prometheus.yml"
     ports:
       - 9090:9090
     restart: unless-stopped
@@ -23,7 +23,7 @@ services:
       - ./grafana:/etc/grafana/provisioning/datasources
       - graf_data:/var/lib/grafana
 
-       node-exporter:
+  node-exporter:
     image: prom/node-exporter
     volumes:
       - /proc:/host/proc:ro
