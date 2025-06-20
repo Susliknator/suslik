@@ -41,6 +41,25 @@ services:
     restart: unless-stopped
     environment:
       TZ: "Europe/Moscow"
+
+  postgres-exporter:
+    image:   bitnami/postgres-exporter:latest
+    environment:
+      - DATA_SOURCE_NAME="postgresql://postgres:yourpassword@db:5432/mydb?sslmode=disable"
+  postgres1:
+    user: "999"
+    hostname: db
+    image: postgres:15
+    container_name: postgres1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=mydb
+    volumes:
+
+
+      - pg_data:/var/lib/postgresql/data
 volumes:
   prom_data:
   graf_data:
+  pg_data:
