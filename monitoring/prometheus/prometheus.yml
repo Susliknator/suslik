@@ -23,7 +23,7 @@ scrape_configs:
     metrics_path: '/metrics'
     static_configs:
       - targets:
-          - 'db:9187'
+          - 'exporter:9187'
         labels:
           cluster: 'postgres_cluster'
     relabel_configs:

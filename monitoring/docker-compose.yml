@@ -43,6 +43,7 @@ services:
       TZ: "Europe/Moscow"
 
   postgres-exporter:
+    hostname: exporter
     image:   bitnami/postgres-exporter:latest
     environment:
       - DATA_SOURCE_NAME="postgresql://postgres:yourpassword@db:5432/mydb?sslmode=disable"
