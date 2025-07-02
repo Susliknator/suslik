@@ -1,0 +1,25 @@
+services:
+  lb:
+    image: nginx
+    ports:
+      - 80:80
+    restart: unless-stopped
+    volumes:
+    - ./conf:/etc/nginx/conf.d
+
+
+  nginx1:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - "./www1:/usr/share/nginx/html"
+  nginx2:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - "./www2:/usr/share/nginx/html"
+  nginx3:
+    image: nginx
+    restart: unless-stopped
+    volumes:
+      - "./www3:/usr/share/nginx/html"
