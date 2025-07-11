@@ -98,5 +98,8 @@ services:
       # - JMX_PORT=9997
   volumes:
     kafka1:
+      driver: local
     kafka2:
+      driver: local
     kafka3:
+      driver: local
