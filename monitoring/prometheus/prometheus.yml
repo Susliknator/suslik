@@ -17,9 +17,9 @@ scrape_configs:
   - job_name: "kafka-cluster"
     static_configs:
       - targets:
-          - "localhost:8080"  # kafka1 (JMX Exporter)
-          - "localhost:8081"  # kafka2
-          - "localhost:8082"  # kafka3
+          - "195.140.147.233:8080"  # kafka1 (JMX Exporter)
+          - "195.140.147.233:8081"  # kafka2
+          - "195.140.147.233:8082"  # kafka3
         labels:
           cluster: "my-kafka-cluster"  # или IP-адрес хост
 
