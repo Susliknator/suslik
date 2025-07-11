@@ -27,8 +27,8 @@ services:
       - 'kafka1:/bitnami/kafka'
       - './jmx_exporter:/opt/jmx_exporter'
       - ./jmx:/opt/jmx
-      ports:
-      - "8080:8080"
+    ports:
+    - "8080:8080"
 
     environment:
       - KAFKA_CFG_NODE_ID=1
@@ -60,8 +60,8 @@ services:
       # - '/var/lib/kafka:/bitnami/kafka'
       - ./jmx:/opt/jmx
       - 'kafka2:/bitnami/kafka'
-      ports:
-      - "8081:8081"
+    ports:
+    - "8081:8081"
 
     environment:
       - KAFKA_CFG_NODE_ID=2
@@ -92,8 +92,8 @@ services:
       # - '/var/lib/kafka:/bitnami/kafka'
       - 'kafka3:/bitnami/kafka'
       - ./jmx:/opt/jmx
-      ports:
-      - "8082:8082"
+    ports:
+    - "8082:8082"
 
     environment:
       - KAFKA_CFG_NODE_ID=3
