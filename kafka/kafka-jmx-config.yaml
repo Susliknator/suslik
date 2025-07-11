@@ -1,0 +1,8 @@
+lowercaseOutputName: true
+rules:
+  - pattern: "kafka.server<type=(.+), name=(.+)><>(Count|Value|Mean|StdDev|FifteenMinuteRate|FiveMinuteRate|OneMinuteRate)"
+    name: "kafka_server_$1_$2"
+    type: GAUGE
+  - pattern: "kafka.log<type=Log, name=(.+)><>(Count|Value|Mean|StdDev|FifteenMinuteRate|FiveMinuteRate|OneMinuteRate)"
+    name: "kafka_log_$1"
+    type: GAUGE
