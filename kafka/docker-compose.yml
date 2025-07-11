@@ -70,7 +70,7 @@ services:
       - KAFKA_INTER_BROKER_USER=controller_user
       - KAFKA_INTER_BROKER_PASSWORD=controller_password
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
-      - KAFKA_OPTS=-javaagent:/opt/jmx_exporter/jmx_prometheus_javaagent.jar=8080:/opt/jmx_exporter/kafka-jmx-config.yaml  # JMX Exporter
+      - KAFKA_OPTS=-javaagent:/opt/jmx_exporter/jmx_prometheus_javaagent.jar=8081:/opt/jmx_exporter/kafka-jmx-config.yaml  # JMX Exporter
       - KAFKA_HEAP_OPTS=-Xmx2048m -Xms2048m
   kafka3:
     user: "0"
@@ -98,7 +98,7 @@ services:
       - KAFKA_INTER_BROKER_USER=controller_user
       - KAFKA_INTER_BROKER_PASSWORD=controller_password
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
-      - KAFKA_OPTS=-javaagent:/opt/jmx_exporter/jmx_prometheus_javaagent.jar=8080:/opt/jmx_exporter/kafka-jmx-config.yaml  # JMX Exporter
+      - KAFKA_OPTS=-javaagent:/opt/jmx_exporter/jmx_prometheus_javaagent.jar=8082:/opt/jmx_exporter/kafka-jmx-config.yaml  # JMX Exporter
       - KAFKA_HEAP_OPTS=-Xmx2048m -Xms2048m
       # - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=u-p-bi-kafka-1.srv.bia-tech.ru -Dcom.sun.management.jmxremote.rmi.port=9997
       # - JMX_PORT=9997

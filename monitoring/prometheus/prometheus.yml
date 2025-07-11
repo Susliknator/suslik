@@ -14,6 +14,15 @@ alerting:
 # Here it's Prometheus itself.
 
 scrape_configs:
+  - job_name: "kafka-cluster"
+    static_configs:
+      - targets:
+          - "localhost:8080"  # kafka1 (JMX Exporter)
+          - "localhost:8081"  # kafka2
+          - "localhost:8082"  # kafka3
+        labels:
+          cluster: "my-kafka-cluster"  # или IP-адрес хост
+
   - job_name: node
     scrape_interval: 5s
     static_configs:
