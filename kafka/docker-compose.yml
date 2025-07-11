@@ -96,7 +96,7 @@ services:
       - KAFKA_HEAP_OPTS=-Xmx2048m -Xms2048m
       # - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=u-p-bi-kafka-1.srv.bia-tech.ru -Dcom.sun.management.jmxremote.rmi.port=9997
       # - JMX_PORT=9997
-  volumes:
+volumes:
     kafka1:
       driver: local
     kafka2:
