@@ -1,6 +1,6 @@
 # my global config
 global:
-  scrape_interval: 15s
+  #scrape_interval: 15s
   scrape_timeout: 30s  # Увеличьте таймаут по умолчанию (10s → 30s)
 
 # Alertmanager configuration
@@ -15,7 +15,7 @@ alerting:
 
 scrape_configs:
   - job_name: "kafka-cluster"
-    scrape_interval: 15s
+    #scrape_interval: 15s
     scrape_timeout: 30s  # Таймаут для конкретного job
     static_configs:
       - targets:
