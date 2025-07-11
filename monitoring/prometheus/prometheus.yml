@@ -1,7 +1,7 @@
 # my global config
 global:
-  scrape_interval:     15s # Global acquisition interval, default 1 m, set to 15s
-  evaluation_interval: 15s # Global rule trigger interval, default 1 m, set 15s here
+  scrape_interval: 15s
+  scrape_timeout: 30s  # Увеличьте таймаут по умолчанию (10s → 30s)
 
 # Alertmanager configuration
 alerting:
@@ -15,6 +15,8 @@ alerting:
 
 scrape_configs:
   - job_name: "kafka-cluster"
+    scrape_interval: 20s
+    scrape_timeout: 25s  # Таймаут для конкретного job
     static_configs:
       - targets:
           - "195.140.147.233:8080"  # kafka1 (JMX Exporter)
