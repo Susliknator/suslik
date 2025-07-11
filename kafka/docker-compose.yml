@@ -1,0 +1,102 @@
+version: '3'
+
+services:
+  # kafka-ui:
+  #   image: provectuslabs/kafka-ui:latest
+  #   container_name: kafka-ui
+  #   restart: unless-stopped
+  #   # ports:
+  #   #   - "8081:8080"
+  #   environment:
+  #     - KAFKA_CLUSTERS_0_NAME=local-kafka
+  #     - KAFKA_CLUSTERS_0_BOOTSTRAP_SERVERS=kafka1:39092,kafka2:39092,kafka3:39092
+  #     - KAFKA_CLUSTERS_0_ZOOKEEPER_CONNECT=  # Не требуется для Kafka в режиме Kraft
+  #     - KAFKA_CLUSTERS_0_KRAFT=true
+  #   network_mode: "host"
+  #   depends_on:
+  #     - kafka1
+  kafka1:
+    user: "0"
+    #network_mode: "host"
+    restart: unless-stopped
+    image: bitnami/kafka:3.5.1
+    container_name: kafka1
+    hostname: kafka1
+    volumes:
+      # - '/var/lib/kafka:/bitnami/kafka'
+      - 'kafka1:/bitnami/kafka'
+    environment:
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka1:9093,2@kafka2:9093,3@kafka3:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:39092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:39092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CLIENT_USERS=admin
+      - KAFKA_CLIENT_PASSWORDS=admin
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CONTROLLER_USER=controller_user
+      - KAFKA_CONTROLLER_PASSWORD=controller_password
+      - KAFKA_INTER_BROKER_USER=controller_user
+      - KAFKA_INTER_BROKER_PASSWORD=controller_password
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_HEAP_OPTS=-Xmx2048m -Xms2048m
+
+  kafka2:
+    user: "0"
+    #network_mode: "host"
+    restart: unless-stopped
+    image: bitnami/kafka:3.5.1
+    container_name: kafka2
+    hostname: kafka2
+    volumes:
+      # - '/var/lib/kafka:/bitnami/kafka'
+      - 'kafka2:/bitnami/kafka'
+    environment:
+      - KAFKA_CFG_NODE_ID=2
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka1:9093,2@kafka2:9093,3@kafka3:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:39092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:39092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CLIENT_USERS=admin
+      - KAFKA_CLIENT_PASSWORDS=admin
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CONTROLLER_USER=controller_user
+      - KAFKA_CONTROLLER_PASSWORD=controller_password
+      - KAFKA_INTER_BROKER_USER=controller_user
+      - KAFKA_INTER_BROKER_PASSWORD=controller_password
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_HEAP_OPTS=-Xmx2048m -Xms2048m
+  kafka3:
+    user: "0"
+    #network_mode: "host"
+    restart: unless-stopped
+    image: bitnami/kafka:3.5.1
+    container_name: kafka3
+    hostname: kafka3
+    volumes:
+      # - '/var/lib/kafka:/bitnami/kafka'
+      - 'kafka3:/bitnami/kafka'
+    environment:
+      - KAFKA_CFG_NODE_ID=3
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@kafka1:9093,2@kafka2:9093,3@kafka3:9093
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:39092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:39092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CLIENT_USERS=admin
+      - KAFKA_CLIENT_PASSWORDS=admin
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CONTROLLER_USER=controller_user
+      - KAFKA_CONTROLLER_PASSWORD=controller_password
+      - KAFKA_INTER_BROKER_USER=controller_user
+      - KAFKA_INTER_BROKER_PASSWORD=controller_password
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_HEAP_OPTS=-Xmx2048m -Xms2048m
+      # - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=u-p-bi-kafka-1.srv.bia-tech.ru -Dcom.sun.management.jmxremote.rmi.port=9997
+      # - JMX_PORT=9997
+  volumes:
+    kafka1:
+    kafka2:
+    kafka3:
